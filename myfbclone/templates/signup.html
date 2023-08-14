@@ -24,6 +24,16 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign UP</h2>
+                        <div>
+                            <style>
+                            h5{
+                                 color:red;
+                            }
+                        </style>
+                            {%for message in messages %}
+                            <h5>{{message}}</h5>
+                            {%endfor%}
+                        </div>
                         <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %} 
                             <div class="form-group">
@@ -53,7 +63,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="{% static 'images/signup-image.jpg'%}" alt="sing up image"></figure>
-                        <a href="{%url 'login' %}" class="signup-image-link">Already have an account</a>
+                        <a href="{% url 'login' %}" class="signup-image-link">Already have an account</a>
                     </div>
                 </div>
             </div>

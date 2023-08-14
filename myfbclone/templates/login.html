@@ -25,9 +25,19 @@
                         <figure><img src="{% static 'images/signin-image.jpg'%}" alt="sing up image"></figure>
                         <a href="{% url 'signup'%}" class="signup-image-link">Create an account</a>
                     </div>
-
                     <div class="signin-form">
-                        <h2 class="form-title">Login to Facebook</h2>
+                     <h2 class="form-title">Login to Facebook</h2>
+                           
+                     <div>
+                        <style>
+                        h5{
+                             color:red;
+                        }
+                    </style>
+                        {%for message in messages %}
+                        <h5>{{message}}</h5>
+                        {%endfor%}
+                    </div>
                         <form method="POST" class="register-form" id="login-form">
                             {% csrf_token %}
                             <div class="form-group">
