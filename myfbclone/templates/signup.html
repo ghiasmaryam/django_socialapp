@@ -23,7 +23,7 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign UP</h2>
+                        <h2 class="form-title" style="color: #0080fe;">Create Account</h2>
                         <div>
                             <style>
                             h5{
@@ -57,13 +57,15 @@
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"
+                                
+                                style="background-color: #4285f4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src="{% static 'images/signup-image.jpg'%}" alt="sing up image"></figure>
-                        <a href="{% url 'login' %}" class="signup-image-link">Already have an account</a>
+                        <figure><img src="{% static 'images/img.gif'%}" alt="sing up image"></figure>
+                        <a href="{% url 'login' %}" class="signup-image-link" style="text-decoration: underline; color: #0080fe; font-weight: bold; font-size: 18px;">Already have an account</a>
                     </div>
                 </div>
             </div>

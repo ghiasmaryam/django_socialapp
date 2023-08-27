@@ -11,6 +11,8 @@ from itertools import chain
 import random
 #decorator for user to enter home page after authentication
 
+
+
 #home page
 @login_required(login_url='login')
 def IndexPage(request):
@@ -189,7 +191,7 @@ def like_post(request):
         post.save()
         return redirect('/')
     
-    #user_profile_screen
+    
 
 
 
@@ -278,3 +280,16 @@ def search(request):
         
         username_profile_list = list(chain(*username_profile_list))
     return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
+
+
+#DElete_post
+
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.method == 'POST':
+        post.delete()
+        # Redirect to a page or URL after deletion
+        return redirect('index')  # Replace 'home' with the appropriate URL name
+
+    return redirect('index')  # Redirect if the request method is not POST

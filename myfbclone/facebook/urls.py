@@ -12,5 +12,7 @@ urlpatterns =[
     path('profile/<str:pk>',views.profile,name='profile'),
     path('follow', views.follow, name='follow'),
     path('search', views.search, name='search'),
+    path('delete_post/<int:post_id>/', views.delete_post, name='delete_post'),
+    
 
 ]

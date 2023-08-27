@@ -16,6 +16,36 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+	<style>
+        /* Add your preferred styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+			
+        }
+
+        .bio {
+            border: 1px solid #ccc;
+            background-color: gainsboro;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        }
+
+
+		.icon {
+            margin-right: 10px;
+        }
+    
+		
+		
+		
+		
+    </style>
 
 </head>
 <body>
@@ -26,40 +56,42 @@
 	
 	<section>
 			<div class="feature-photo">
-				<figure><img src="{% static 'images/resources/timeline-1.jpg' %}" alt=""></figure>
+				<figure><img src="{% static 'images/resources/facebook_wordmark.gif' %}"style="height: 400px; width: 400%; " alt=""></figure>
 				<form action="/follow" method="POST">
 					{% csrf_token %}
 					<div class="add-btn">
-					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
+					<span style="color: black; font-size: 27px; margin-right: 250px;"><b><u><a href="/">Home</a></u></b></span>
 					
 					{% if user_post_length == 0 %}
-					<span style="color: white; font-size: 27px;"><b>No Post</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-file"></i></b><i>No Post</i></span>
 					{% elif user_post_length == 1 %}
-					<span style="color: white; font-size: 27px;"><b>{{user_post_length}} Post</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-files"></i></b>{{user_post_length}} <i>Post</i></span>
 					{% else %}
-					<span style="color: white; font-size: 27px;"><b>{{user_post_length}} Posts</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-files"></i></b>{{user_post_length}}<i> Posts</i></span>
 					{% endif %}
 
 					{% if user_followers == 0 or user_followers == 1 %}
-					<span style="color: white; font-size: 27px;"><b>{{user_followers}} follower</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b></i>{{user_followers}} <i>follower</i></span>
 					{% else %}
-					<span style="color: white; font-size: 27px;"><b>{{user_followers}} followers</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_followers}}<i> followers</i></span>
 					{% endif %}
 
 
-					<span style="color: white; font-size: 27px;"><b>{{user_following}} following</b></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_following}} <i>following</i></span>
 
 					<input type="hidden" value="{{user.username}}" name="follower" />
 					<input type="hidden" value="{{user_object.username}}" name="user" />
 
 					{% if user_object.username == user.username %}
-					<a href="/settings" data-ripple="">Account Settings</a>
+					<a href="/settings" data-ripple="" >Account Settings</a>
 					{% else %}
-					<a data-ripple=""><button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">{{button_text}}</button></a>
+					<a data-ripple="" style="background-color: skyblue; border: 1px solid skyblue; padding: 5px 10px; border-radius: 5px; color: black; text-decoration: none;">
+						<button type="submit" style="background-color: skyblue; border: none; padding: 5px 10px; border-radius: 5px; color: black;">{{button_text}}</button></a>
 					{% endif %}
-
+                    
 					</div>
 				</form>
+				
 
 				<!-- <form class="edit-phto">
 					<i class="fa fa-camera-retro"></i>
@@ -69,11 +101,16 @@
 					</label>
 				</form> -->
 				<div class="container-fluid">
-					<div class="row merged">
-						<div class="col-lg-2 col-sm-3">
-							<div class="user-avatar">
+					
+					<div class="row merged" style="margin-left: 2%;">
+						
+						<div class="col-lg-2 col-sm-3" >
+							
+							<div class="user-avatar" style="width: 254px; height: 254px; border-radius: 50%; border: 4px solid white; overflow: hidden; display: flex; justify-content: center; align-items: center; color: white ;">
+								
 								<figure>
-									<img src="{{user_profile.profileimg.url}}" style="height: 250px; width: 100%;" alt="">
+
+									<img src="{{user_profile.profileimg.url}}" style="width: 254px; height: 254px; border-radius: 200%;" alt="Profile Picture">
 									
 								</figure>
 							</div>
@@ -82,7 +119,7 @@
 							<div class="timeline-info">
 								<ul>
 									<li class="admin-name">
-									  <h5 style="color: black;white-space: nowrap; width: 110px; font-size: 27px;"><b>@{{user_profile.user.username}}</b><!--<i class="fa fa-check-circle" style="color: #48dbfb;" aria-hidden="true"></i>--></h5>
+									  <h5 style="color: darkblue;white-space: nowrap; width: 110px; font-size: 27px; margin-left: 60px;"><b>@{{user_profile.user.username}}</b></h5>
 									  
 								</ul>
 							</div>
@@ -92,8 +129,8 @@
 			</div>
 		</section><!-- top area -->
 		<section>
-			<div class="bio">
-					{{user_profile.bio}}
+			<div class="bio" >
+					<i><b>{{user_profile.bio}}</b></i>
 			</div>
 		</section>
 		

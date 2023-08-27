@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Splash Screen</title>
+    <!-- Add your CSS and JavaScript references here -->
+</head>
+<body>
+    <div class="splash-container">
+        <!-- Add your splash screen content here -->
+    </div>
+    
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'app_view' %}?show=main";
+        }, 3000);  // Redirect after 3 seconds
+    </script>
+</body>
+</html>
