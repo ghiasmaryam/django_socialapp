@@ -19,16 +19,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        .image-container {
-            width: 300px; /* Set your desired width */
-            height: 200px; /* Set your desired height */
-            position: relative;
+        .centered-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
         }
     
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .centered-image-container img {
+            width: 20pc; /* Adjust the width as needed */
+            height: auto;
+            max-width: none; /* Overriding max-width */
+            max-height: none; /* Overriding max-height */
         }
     </style>
 
@@ -244,12 +246,11 @@
                             </div>
     
                             
-                            <div uk-lightbox >
+                            <div class="centered-image-container">
                                 
-                                <a href="{{post.image.url}}"  >  
-                                 <img src="{{post.image.url}}"alt=""  class="w-full h-full object-cover rounded-md" style="padding: 10%;" >
+                                <a href="{{post.image.url}}" >   
+                                    <img src="{{post.image.url}}"alt=""  >
                                 </a>
-                                
                             </div>
                             
     

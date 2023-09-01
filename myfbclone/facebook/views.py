@@ -151,7 +151,7 @@ def settings(request):
             user_profile.location = location
             user_profile.save()
         
-        return redirect('settings')
+        return redirect('index')
    return render(request, 'setting.html', {'user_profile': user_profile})
 
 
@@ -282,14 +282,3 @@ def search(request):
     return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
 
 
-#DElete_post
-
-def delete_post(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-
-    if request.method == 'POST':
-        post.delete()
-        # Redirect to a page or URL after deletion
-        return redirect('index')  # Replace 'home' with the appropriate URL name
-
-    return redirect('index')  # Redirect if the request method is not POST
