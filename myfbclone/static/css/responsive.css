@@ -648,6 +648,8 @@
     .add-btn > a {
         font-size: 11px;
         padding: 3px 13px;
+        border: 1px solid rgb(67, 185, 231);
+        background-color: rgb(32, 196, 224) !important;
     }
     .edit-phto .fileContainer [type="file"] {
         width: 100%;

@@ -16,51 +16,45 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-	<style>
-        /* Add your preferred styles here */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            margin: 0;
-            padding: 0;
-			
-        }
-
-        .bio {
-            border: 1px solid #ccc;
-            background-color: gainsboro;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-        }
-
-
-		.icon {
-            margin-right: 10px;
-        }
-    
+    <style>
+		.container {
+			display: flex;
+			justify-content: center; /* Center horizontally */
+			align-items: center; /* Center vertically */
+			height: 100vh; /* Set a height for the container, or adjust as needed */
+		}
 		
+		.user-uploaded-image {
+			border: 2px solid #00008b; /* Example border style */
+			border-radius: 10px; /* Rounded corners */
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
+			margin: 10px; /* Spacing around images */
+			transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+			width: 200px; /* Set the desired width */
+			height: 200px; /* Set the desired height */
+		}
 		
-		
-		
-    </style>
-
+		.user-uploaded-image:hover {
+			transform: scale(1.05); /* Enlarge on hover */
+		}
+	</style>
+	
 </head>
+
+
 <body>
-<!--<div class="se-pre-con"></div>-->
-<div class="theme-layout">
+  <!--<div class="se-pre-con"></div>-->
+  <div class="theme-layout">
 	
-	</div>
+  </div>
 	
-	<section>
+    <section>
 			<div class="feature-photo">
-				<figure><img src="{% static 'images/resources/facebook_wordmark.gif' %}"style="height: 400px; width: 400%; " alt=""></figure>
+				<figure><img src="{% static 'images/uu.gif' %}"style="height: 400px; width: 400%; " alt=""></figure>
 				<form action="/follow" method="POST">
 					{% csrf_token %}
 					<div class="add-btn">
-					<span style="color: black; font-size: 27px; margin-right: 250px;"><b><u><a href="/">Home</a></u></b></span>
+					<span style="color: black; font-size: 27px; margin-right: 300px;"><b><u><a href="/">Home</a></u></b></span>
 					
 					{% if user_post_length == 0 %}
 					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-file"></i></b><i>No Post</i></span>
@@ -71,13 +65,13 @@
 					{% endif %}
 
 					{% if user_followers == 0 or user_followers == 1 %}
-					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b></i>{{user_followers}} <i>follower</i></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b></i>{{user_followers}} <i>Friend</i></span>
 					{% else %}
-					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_followers}}<i> followers</i></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_followers}}<i> Friends</i></span>
 					{% endif %}
 
 
-					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_following}} <i>following</i></span>
+					<span style="color: black; font-size: 27px;"><b class="icon"><i class="fa fa-users"></i></b>{{user_following}} <i>Following</i></span>
 
 					<input type="hidden" value="{{user.username}}" name="follower" />
 					<input type="hidden" value="{{user_object.username}}" name="user" />
@@ -119,7 +113,7 @@
 							<div class="timeline-info">
 								<ul>
 									<li class="admin-name">
-									  <h5 style="color: darkblue;white-space: nowrap; width: 110px; font-size: 27px; margin-left: 60px;"><b>@{{user_profile.user.username}}</b></h5>
+									 <h5 style="color: darkblue;white-space: nowrap; width: 110px; font-size: 27px; margin-left: 60px;"><b>@{{user_profile.user.username}}</b></h5>
 									  
 								</ul>
 							</div>
@@ -129,7 +123,7 @@
 			</div>
 		</section><!-- top area -->
 		<section>
-			<div class="bio" >
+			<div class="bio" style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; text-align: center;">
 					<i><b>{{user_profile.bio}}</b></i>
 			</div>
 		</section>
@@ -159,12 +153,12 @@
 
 							<div class="col-lg-6">
 								<div class="central-meta">
-									<ul class="photos">
+									<ul class="photos-vertical">
 					
-										{% for post in user_posts %}
+									 {% for post in user_posts %}
 										<li>
-											<a class="strip" href="{{post.image.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="{{post.image.url}}" style="height: 250px; width: 300px;" alt=""></a>
+									      <a class="strip" href="{{post.image.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+										   <img class="user-uploaded-image" src="{{post.image.url}}"  alt=""></a>
 										</li>
 										{% endfor %}
 										

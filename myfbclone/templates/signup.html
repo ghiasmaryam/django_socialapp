@@ -24,17 +24,10 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title" style="color: #0080fe;">Create Account</h2>
-                        <div>
-                            <style>
-                            h5{
-                                 color:red;
-                            }
-                        </style>
-                            {%for message in messages %}
-                            <h5>{{message}}</h5>
-                            {%endfor%}
-                        </div>
-                        <form method="POST" class="register-form" id="register-form">
+                        
+                        
+                        
+                        <form method="POST" class="register-form" id="register-form" onsubmit="return validateForm()">
                             {% csrf_token %} 
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -57,7 +50,7 @@
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"  onclick="return validateForm();"
                                 
                                 style="background-color: #4285f4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
                             </div>
@@ -73,6 +66,60 @@
 
        
     <!-- JS -->
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password1 = document.getElementById("password1").value;
+            var password2 = document.getElementById("password2").value;
+    
+            // Reset previous error messages
+            document.getElementById("username-error").innerHTML = "";
+            document.getElementById("email-error").innerHTML = "";
+            document.getElementById("password-error").innerHTML = "";
+    
+            // Check if fields are empty
+            if (username === "") {
+                document.getElementById("username-error").innerHTML = "Username is required";
+                return false;
+            }
+            if (email === "") {
+                document.getElementById("email-error").innerHTML = "Email is required";
+                return false;
+            }
+            if (password1 === "") {
+                document.getElementById("password-error").innerHTML = "Password is required";
+                return false;
+            }
+    
+            // Check if passwords match
+            if (password1 !== password2) {
+                document.getElementById("password-error").innerHTML = "Passwords do not match";
+                return false;
+            }
+    
+            // Check email format using a regular expression
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("email-error").innerHTML = "Invalid email format";
+                return false;
+            }
+    
+            // If all checks pass, redirect to the next page and show a toast message
+            redirectToNextPage();
+            return false; // Prevent the form from submitting
+        }
+    
+        function redirectToNextPage() {
+            // You can use window.location.href to redirect to the next page
+            window.location.href = "login.html";
+            // You can also display a toast message using a library like Toastr
+            {% comment %} toastr.success("Registration successful!"); {% endcomment %}
+        }
+       
+    </script>
+    
+    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
 
