@@ -77,7 +77,7 @@
 					<input type="hidden" value="{{user_object.username}}" name="user" />
 
 					{% if user_object.username == user.username %}
-					<a href="/settings" data-ripple="" >Account Settings</a>
+					<a class="blue-button" href="/settings"  >Account Settings</a>
 					{% else %}
 					<a data-ripple="" style="background-color: skyblue; border: 1px solid skyblue; padding: 5px 10px; border-radius: 5px; color: black; text-decoration: none;">
 						<button type="submit" style="background-color: skyblue; border: none; padding: 5px 10px; border-radius: 5px; color: black;">{{button_text}}</button></a>
@@ -155,12 +155,15 @@
 								<div class="central-meta">
 									<ul class="photos-vertical">
 					
-									 {% for post in user_posts %}
-										<li>
+									{% for post in user_posts %}
+									 <li>
+										{% if post.image %}
 									      <a class="strip" href="{{post.image.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-										   <img class="user-uploaded-image" src="{{post.image.url}}"  alt=""></a>
+										  <img class="user-uploaded-image" src="{{post.image.url}}"  alt=""></a>
+										 {% endif %}
 										</li>
-										{% endfor %}
+
+									{% endfor %}
 										
 										
 										

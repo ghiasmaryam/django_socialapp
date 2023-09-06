@@ -1692,12 +1692,18 @@ header.sticky {
 
 .add-btn > a {
     border-radius: 2px;
-    color: #000;
+    /* color: #000; */
     display: inline-block;
     font-size: 14px;
     padding: 4px 20px;
     border: 1px solid pink;
-    background-color: pink !important;
+    background-color: #007bff !important;
+    color: white;
+
+    /* &:hover {
+      color: white !important;
+    } */
+}
 
 }
 
@@ -10628,4 +10634,15 @@ aside.sidebar.full-style {
     font-weight: bold;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+}
+
+.blue-button {
+  background-color: #007bff !important;
+  padding: 5px;
+  color: white;
+  font-size: 16px;
+
+  &:hover {
+    color: white !important;
+  }
 }
